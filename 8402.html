@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <title>8月四号ajax and json学习</title>
+
+    <div>
+        <p id="1">day1</p>
+        <p id="2">day2</p>
+        <p id="3">day3</p>
+        <p id="4">day4</p>
+        <p id="5">day5</p>
+    </div>
+
+    <script type="text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js" ></script>
+<script>
+        //页面加载   获取全部信息
+
+        $(function(){
+
+            $("p").click(function(){
+                day = $(this).attr("id");
+                var url = "images/day" + day + ".json";
+
+                $.ajax({
+                    type: "GET",//请求方式
+                    url: url,//地址，就是json文件的请求路径
+                    dataType: "json",//数据类型可以为 text xml json  script  jsonp
+    　　　　　　　　　 success: function(result){//返回的参数就是 action里面所有的有get和set方法的参数
+                        var html = "";
+                        $.each(result,function(index,obj){             
+                             html = html + "<p>" + obj + "</p>";
+                        });
+
+                        $("#box").empty();
+                        $("#box").append(html);
+                    }
+                });
+            })
+        
+        });
+       
+    </script>
+</head>
+<body>
+<!-- 构建装一个容器 -->
+<div id="box">
+
+</div>
+</body>
+</html>
