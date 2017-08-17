@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>tab标签</title>
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+<style type="text/css">*{margin:0;padding:0;}/*边框清零*/
+.box{
+  margin:50px auto;
+  width: 1000px;
+  padding :100px;
+  background: #7F7D7D;
+}
+
+li  {
+  position: relative;
+  background: #ddd;
+  padding: 10px 50px;
+  float: left;
+  text-decoration: none;
+  color: #444;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .4);
+}
+.tabs {
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tabs li {
+  float: left;
+  margin: 0;
+}
+.box_content{
+  background: #fff;
+  padding: 50px;
+  height: 220px;
+  position: relative;
+  border-radius: 0 5px 5px 5px;
+  box-shadow: 0 -2px 3px -2px rgba(0, 0, 0, .5);
+}
+
+.one{
+  color:#fff;
+}
+</style>
+</head>
+
+
+
+
+<script type="text/javascript"  src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+  $(document).ready(function(){
+     $(".box .box_content li").hide().eq(0).show();//hide all content
+     var key;//设置变量 确定对应li的标签的下角标值
+     $(".tabs li").click(function(){//点击事件，执行下列函数
+      $(this).addClass("one").siblings().removeClass("one");//点击当前li元素标签后加载one的CSS效果
+      key = $(".tabs li").index(this);
+      $(".box_content li").hide().eq(key).show();
+    //  console.log(index);
+     });
+
+    });
+</script>
+
+<body>
+  <div class="box">
+    <!-- tab栏 -->
+    <ul class="tabs">
+      <li class="one">Mon</li>
+      <li>Tue</li>
+      <li>Wed</li>
+      <li>Thu</li>
+      <li>Fri</li>
+    </ul>
+    
+    <div class="box_content">
+      <li> 1.信息安全基础<hr> 2.弱口令<hr> 3.暴力破解<hr> 4.SQL注入<hr> 5.文件上传<hr> 6.文件包含<hr> </li>
+      <li>1.任意文件操作<hr> 2.命令执行<hr> 3.逻辑漏洞和越权<hr> 4.汇编基础介绍<hr> 5.工具介绍<hr> 6.逆向类CTF题目实战<hr></li>
+      <li>1.漏洞溢出原理介绍<hr><hr>2.exp编写技术<hr></li>
+      <li>古典密码学交流<hr></li>
+      <li>1.隐写术<hr>2.取证<hr></li>
+    </div>
+    <!-- 对应显示内容 
+    div + .box 代表最外层盒子
+    ul+li+.tab
+    ul+li+box_content代表选项卡对应的切换内容 -->
+  </div>
+</div>
+</body>
+</html>
